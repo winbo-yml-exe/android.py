@@ -1,6 +1,7 @@
 import pystyle
 import os
 import time
+import requests
 from android_py_modules import android_py_adb
 
 def cs():
@@ -108,11 +109,29 @@ def flash_via_url():
     rom_url = pystyle.Write.Input("Specify URL to the Custom ROM you want to flash: ", pystyle.Colors.red_to_yellow, interval=0)
     rom_boot_url = pystyle.Write.Input("Specify URL to the Custom ROM's boot/recovery.img you want to flash: ", pystyle.Colors.red_to_yellow, interval=0)
     if os.name == "nt":
-        os.system(f"curl -Lo %temp%\\rom.zip {rom_url}")
-        os.system(f"curl -Lo %temp%\\boot.img {rom_boot_url}")
-    elif os.name == "posix":
-        os.system(f"curl -Lo /tmp/rom.zip {rom_url}")
-        os.system(f"curl -Lo /tmp/boot.img {rom_boot_url}")
+        with open(os.path.join(os.getenv("TEMP"), "rom.zip"), 'wb') as file:
+            response = requests.get(rom_url, stream=True)
+            response.raise_for_status()
+            for chunk in response.iter_content(chunk_size=8192):
+                file.write(chunk)
+
+        with open(os.path.join(os.getenv("TEMP"), "boot.img"), 'wb') as file:
+            response = requests.get(rom_boot_url, stream=True)
+            response.raise_for_status()
+            for chunk in response.iter_content(chunk_size=8192):
+                file.write(chunk)
+    else:
+        with open("/tmp/rom.zip", 'wb') as file:
+            response = requests.get(rom_url, stream=True)
+            response.raise_for_status()
+            for chunk in response.iter_content(chunk_size=8192):
+                file.write(chunk)
+
+        with open("/tmp/boot.img", 'wb') as file:
+            response = requests.get(rom_boot_url, stream=True)
+            response.raise_for_status()
+            for chunk in response.iter_content(chunk_size=8192):
+                file.write(chunk)
     android_py_adb.reboot("bootloader")
     if os.name == "nt":
         android_py_adb.flash_rom("%temp%\\boot.img", "%temp%\\rom.zip")
@@ -132,9 +151,17 @@ def root():
     print()
     android_py_adb.reboot("sideload")
     if os.name == "nt":
-        os.system("curl -Lo %temp%\\magisk.apk https://github.com/topjohnwu/Magisk/releases/download/v28.1/Magisk-v28.1.apk")
+        with open(os.path.join(os.getenv("TEMP"), "magisk.apk"), 'wb') as file:
+            response = requests.get("https://github.com/topjohnwu/Magisk/releases/download/v28.1/Magisk-v28.1.apk", stream=True)
+            response.raise_for_status()
+            for chunk in response.iter_content(chunk_size=8192):
+                file.write(chunk)
     elif os.name == "posix":
-        os.system("curl -Lo /tmp/magisk.apk https://github.com/topjohnwu/Magisk/releases/download/v28.1/Magisk-v28.1.apk")
+        with open("/tmp/magisk.apk", 'wb') as file:
+            response = requests.get("https://github.com/topjohnwu/Magisk/releases/download/v28.1/Magisk-v28.1.apk", stream=True)
+            response.raise_for_status()
+            for chunk in response.iter_content(chunk_size=8192):
+                file.write(chunk)
     if os.name == "nt":
         android_py_adb.sideload("%temp%\\magisk.apk")
     elif os.name == "posix":
