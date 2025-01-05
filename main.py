@@ -61,15 +61,15 @@ samsung_hub = r"""
 
 def samsung():
     cs()
-    pystyle.Write.Print(banner, pystyle.Colors.blue_to_green, interval=0)
-    pystyle.Write.Print("android.py | The best ADB and fastboot Python toolkit for modifying Android devices. | Alpha 1.2", pystyle.Colors.blue_to_green, interval=0)
+    pystyle.Write.Print(banner, pystyle.Colors.blue_to_white, interval=0)
+    pystyle.Write.Print("android.py | The best ADB and fastboot Python toolkit for modifying Android devices. | Alpha 1.2", pystyle.Colors.blue_to_white, interval=0)
 
     print()
     print()
 
     pystyle.Write.Print("Samsung hub choices (VERY WIP):", pystyle.Colors.blue_to_white, interval=0)
     pystyle.Write.Print(samsung_hub, pystyle.Colors.blue_to_white, interval=0)
-    samsung_choice = int(pystyle.Write.Input("Which option would you like to select? ", pystyle.Colors.red_to_yellow, interval=0))
+    samsung_choice = int(pystyle.Write.Input("Which option would you like to select? ", pystyle.Colors.blue_to_white, interval=0))
 
     if samsung_choice == 1:
         if platform.system() == "Windows":
@@ -91,15 +91,15 @@ def samsung():
 
 def reboot_options():
     cs()
-    pystyle.Write.Print(banner, pystyle.Colors.blue_to_green, interval=0)
-    pystyle.Write.Print("android.py | The best ADB and fastboot Python toolkit for modifying Android devices. | Alpha 1.2", pystyle.Colors.blue_to_green, interval=0)
+    pystyle.Write.Print(banner, pystyle.Colors.blue_to_white, interval=0)
+    pystyle.Write.Print("android.py | The best ADB and fastboot Python toolkit for modifying Android devices. | Alpha 1.2", pystyle.Colors.blue_to_white, interval=0)
 
     print()
     print()
 
     pystyle.Write.Print("Reboot choices:", pystyle.Colors.blue_to_white, interval=0)
     pystyle.Write.Print(reboot_choices, pystyle.Colors.blue_to_white, interval=0)
-    reboot_choice = int(pystyle.Write.Input("Which option would you like to select? ", pystyle.Colors.red_to_yellow, interval=0))
+    reboot_choice = int(pystyle.Write.Input("Which option would you like to select? ", pystyle.Colors.blue_to_white, interval=0))
 
     if reboot_choice == 1:
         android_py_adb.reboot("system")
@@ -139,18 +139,18 @@ def reboot_options():
 
 def flash_local():
     cs()
-    rom_path = pystyle.Write.Input("Specify path to the Custom ROM you want to flash: ", pystyle.Colors.red_to_yellow, interval=0)
-    rom_boot_path = pystyle.Write.Input("Specify path to the Custom ROM's boot/recovery.img you want to flash: ", pystyle.Colors.red_to_yellow, interval=0)
+    rom_path = pystyle.Write.Input("Specify path to the Custom ROM you want to flash: ", pystyle.Colors.blue_to_white, interval=0)
+    rom_boot_path = pystyle.Write.Input("Specify path to the Custom ROM's boot/recovery.img you want to flash: ", pystyle.Colors.blue_to_white, interval=0)
     android_py_adb.reboot("bootloader")
     android_py_adb.flash_rom(rom_boot_path, rom_path)
-    pystyle.Write.Print("Done! Returning to main menu in 3 seconds.", pystyle.Colors.red_to_yellow, interval=0)
+    pystyle.Write.Print("Done! Returning to main menu in 3 seconds.", pystyle.Colors.blue_to_white, interval=0)
     time.sleep(3)
     main()
 
 def flash_via_url():
     cs()
-    rom_url = pystyle.Write.Input("Specify URL to the Custom ROM you want to flash: ", pystyle.Colors.red_to_yellow, interval=0)
-    rom_boot_url = pystyle.Write.Input("Specify URL to the Custom ROM's boot/recovery.img you want to flash: ", pystyle.Colors.red_to_yellow, interval=0)
+    rom_url = pystyle.Write.Input("Specify URL to the Custom ROM you want to flash: ", pystyle.Colors.blue_to_white, interval=0)
+    rom_boot_url = pystyle.Write.Input("Specify URL to the Custom ROM's boot/recovery.img you want to flash: ", pystyle.Colors.blue_to_white, interval=0)
     if os.name == "nt":
         with open(os.path.join(os.getenv("TEMP"), "rom.zip"), 'wb') as file:
             response = requests.get(rom_url, stream=True)
@@ -186,7 +186,7 @@ def flash_via_url():
     else:
         os.remove("/tmp/boot.img")
         os.remove("/tmp/rom.zip")
-    pystyle.Write.Print("Done! Returning to main menu in 3 seconds.", pystyle.Colors.red_to_yellow, interval=0)
+    pystyle.Write.Print("Done! Returning to main menu in 3 seconds.", pystyle.Colors.blue_to_white, interval=0)
     time.sleep(3)
     main()
 
@@ -213,14 +213,14 @@ def root():
         os.system("del %temp%\\magisk.apk")
     elif os.name == "posix":
         os.remove("/tmp/magisk.apk")
-    pystyle.Write.Print("Done! Returning to main menu in 3 seconds.", pystyle.Colors.red_to_yellow, interval=0)
+    pystyle.Write.Print("Done! Returning to main menu in 3 seconds.", pystyle.Colors.blue_to_white, interval=0)
     time.sleep(3)
     cs()
     main()
 
 def brick():
     cs()
-    brick_choice = pystyle.Write.Input("[WARNING] This will erase the Linux kernel from your device! Are you sure you wanna continue? (yes/anything else = no) ", pystyle.Colors.red_to_yellow, interval=0)
+    brick_choice = pystyle.Write.Input("[WARNING] This will erase the Linux kernel from your device! Are you sure you wanna continue? (yes/anything else = no) ", pystyle.Colors.blue_to_white, interval=0)
     if brick_choice == "yes":
         android_py_adb.fastboot_erase("boot")
         cs()
@@ -230,8 +230,8 @@ def brick():
         main()
 
 def main():
-    pystyle.Write.Print(banner, pystyle.Colors.blue_to_green, interval=0)
-    pystyle.Write.Print("android.py | The best ADB and fastboot Python toolkit for modifying Android devices. | Alpha 1.2", pystyle.Colors.blue_to_green, interval=0)
+    pystyle.Write.Print(banner, pystyle.Colors.blue_to_white, interval=0)
+    pystyle.Write.Print("android.py | The best ADB and fastboot Python toolkit for modifying Android devices. | Alpha 1.2", pystyle.Colors.blue_to_white, interval=0)
     time.sleep(3)
 
     print()
@@ -239,7 +239,7 @@ def main():
 
     pystyle.Write.Print("Choices (WIP):", pystyle.Colors.blue_to_white, interval=0)
     pystyle.Write.Print(choices, pystyle.Colors.blue_to_white, interval=0)
-    choice = int(pystyle.Write.Input("Which option would you like to select? ", pystyle.Colors.red_to_yellow, interval=0))
+    choice = int(pystyle.Write.Input("Which option would you like to select? ", pystyle.Colors.blue_to_white, interval=0))
 
     if choice == 1:
         reboot_options()
