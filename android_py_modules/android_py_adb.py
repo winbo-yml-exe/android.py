@@ -6,9 +6,13 @@ if platform.system() == "Windows":
     adb_exe = "adb-windows\\adb.exe"
     fastboot_exe = "adb-windows\\fastboot.exe"
 elif platform.system() == "Linux":
+    os.system("chmod a+x adb-linux/adb")
+    os.system("chmod a+x adb-linux/fastboot")
     adb_exe = "adb-linux/adb"
     fastboot_exe = "adb-linux/fastboot"
 elif platform.system() == "Darwin":
+    os.system("chmod a+x adb-linux/adb")
+    os.system("chmod a+x adb-linux/fastboot")
     adb_exe = "adb-darwin/adb"
     fastboot_exe = "adb-darwin/fastboot"
 else:
