@@ -46,6 +46,7 @@ reboot_choices = r"""
  [5] Reboot to bootloader
  [6] Reboot to fastbootd
  [7] [QUALCOMM ONLY] Reboot to EDL
+ [8] [SAMSUNG ONLY] Reboot to download mode
  [99] Return to main menu
  
 """
@@ -88,6 +89,10 @@ def reboot_options():
         main()
     elif reboot_choice == 7:
         android_py_adb.reboot("edl")
+        cs()
+        main()
+    elif reboot_choice == 8:
+        android_py_adb.reboot("download")
         cs()
         main()
     elif reboot_choice == 99:

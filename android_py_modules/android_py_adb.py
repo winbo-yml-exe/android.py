@@ -44,6 +44,9 @@ def reboot(target):
     elif target.lower() == "sideload":
         print("Rebooting to sideload...")
         os.system(f"{adb_exe} reboot sideload")
+    elif target.lower() == "download":
+        print("Rebooting to download mode...")
+        os.system(f"{adb_exe} reboot download")
     else:
         print("The mode you specified doesn't exist.")
 
