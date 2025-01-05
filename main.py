@@ -58,7 +58,7 @@ def reboot_options():
     print()
 
     pystyle.Write.Print("Reboot choices:", pystyle.Colors.blue_to_white, interval=0)
-    pystyle.Write.Print(reboot_choices, pystyle.Colors.blue_to_red, interval=0)
+    pystyle.Write.Print(reboot_choices, pystyle.Colors.blue_to_white, interval=0)
     reboot_choice = int(pystyle.Write.Input("Which option would you like to select? ", pystyle.Colors.red_to_yellow, interval=0))
 
     if reboot_choice == 1:
@@ -150,7 +150,7 @@ def root():
 
 def brick():
     cs()
-    brick_choice = pystyle.Write.Input("[WARNING] This will erase the Linux kernel from your device! Are you sure you wanna continue? (yes/anything else = no) ", pystyle.Colors.red_to_white, interval=0)
+    brick_choice = pystyle.Write.Input("[WARNING] This will erase the Linux kernel from your device! Are you sure you wanna continue? (yes/anything else = no) ", pystyle.Colors.red_to_yellow, interval=0)
     if brick_choice == "yes":
         android_py_adb.fastboot_erase("boot")
     else:
@@ -166,7 +166,7 @@ def main():
     print()
 
     pystyle.Write.Print("Choices (WIP):", pystyle.Colors.blue_to_white, interval=0)
-    pystyle.Write.Print(choices, pystyle.Colors.blue_to_red, interval=0)
+    pystyle.Write.Print(choices, pystyle.Colors.blue_to_white, interval=0)
     choice = int(pystyle.Write.Input("Which option would you like to select? ", pystyle.Colors.red_to_yellow, interval=0))
 
     if choice == 1:
