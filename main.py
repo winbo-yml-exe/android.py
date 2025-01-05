@@ -185,6 +185,8 @@ def brick():
     brick_choice = pystyle.Write.Input("[WARNING] This will erase the Linux kernel from your device! Are you sure you wanna continue? (yes/anything else = no) ", pystyle.Colors.red_to_yellow, interval=0)
     if brick_choice == "yes":
         android_py_adb.fastboot_erase("boot")
+        cs()
+        main()
     else:
         cs()
         main()
