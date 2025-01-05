@@ -210,7 +210,7 @@ def main():
         exit()
     else:
         print("Invalid choice.")
-        time.sleep(3)
+        time.sleep(1)
         cs()
         main()
 
