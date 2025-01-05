@@ -6,6 +6,8 @@ Still W.I.P but gets the job done.
 
 ![image](https://github.com/user-attachments/assets/5d047253-3988-495f-bac8-f2c722876f60)
 
+# NOTE: For now, only Snapdragon Samsungs will work with flashing and bricking (only them have fastboot)!
+
 # Steps to run the tool
 1: Download the source code
 
