@@ -186,7 +186,7 @@ def brick():
 
 def main():
     pystyle.Write.Print(banner, pystyle.Colors.blue_to_green, interval=0)
-    pystyle.Write.Print("android.py | The best ADB and fastboot Python toolkit for modifying Android devices. | Alpha 1.0", pystyle.Colors.blue_to_green, interval=0)
+    pystyle.Write.Print("android.py | The best ADB and fastboot Python toolkit for modifying Android devices. | Alpha 1.2", pystyle.Colors.blue_to_green, interval=0)
     time.sleep(3)
 
     print()
