@@ -4,7 +4,7 @@ android.py is a toolkit made for modding Android devices.
 
 Still W.I.P but gets the job done.
 
-![image](https://github.com/user-attachments/assets/38697c10-d4c2-4f85-afc6-86751a15f9c6)
+![image](https://github.com/user-attachments/assets/5d047253-3988-495f-bac8-f2c722876f60)
 
 # Steps to run the tool
 1: Download the source code
