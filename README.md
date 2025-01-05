@@ -6,6 +6,15 @@ Still W.I.P but gets the job done.
 
 ![image](https://github.com/user-attachments/assets/38697c10-d4c2-4f85-afc6-86751a15f9c6)
 
+# Steps to run the tool
+1: Download the source code
+
+2: Open a terminal in where the tool's files are
+
+3: Run `pip install -r requirements.txt`
+
+4: Then finally, run the tool, `python main.py` (might be py/python3 on some other OSes)
+
 # Warning
 
 We are not responsible if
