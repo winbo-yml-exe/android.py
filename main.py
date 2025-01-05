@@ -55,7 +55,7 @@ reboot_choices = r"""
 
 samsung_hub = r"""
 
- [1] Porable Odin
+ [1] Portable Odin
 
 """
 
