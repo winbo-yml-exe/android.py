@@ -2,6 +2,7 @@ import pystyle
 import os
 import time
 import requests
+import platform
 from android_py_modules import android_py_adb
 
 def cs():
@@ -20,6 +21,7 @@ choices = r"""
  [3] Flash Custom ROM via URL
  [4] Root device (requires custom recovery to be installed!)
  [5] Brick device (be careful!)
+ [6] Samsung hub
  [99] Exit
  
 """
@@ -50,6 +52,42 @@ reboot_choices = r"""
  [99] Return to main menu
  
 """
+
+samsung_hub = r"""
+
+ [1] Porable Odin
+
+"""
+
+def samsung():
+    cs()
+    pystyle.Write.Print(banner, pystyle.Colors.blue_to_green, interval=0)
+    pystyle.Write.Print("android.py | The best ADB and fastboot Python toolkit for modifying Android devices. | Alpha 1.2", pystyle.Colors.blue_to_green, interval=0)
+
+    print()
+    print()
+
+    pystyle.Write.Print("Samsung hub choices (VERY WIP):", pystyle.Colors.blue_to_white, interval=0)
+    pystyle.Write.Print(samsung_hub, pystyle.Colors.blue_to_white, interval=0)
+    samsung_choice = int(pystyle.Write.Input("Which option would you like to select? ", pystyle.Colors.red_to_yellow, interval=0))
+
+    if samsung_choice == 1:
+        if platform.system() == "Windows":
+            os.chdir(os.path.join(os.path.dirname(os.path.abspath(__file__)), "portable-odin-windows"))
+            os.system("Odin3.exe")
+            cs()
+            main()
+        elif platform.system() == "Linux":
+            os.chdir(os.path.join(os.path.dirname(os.path.abspath(__file__)), "portable-odin-linux"))
+            os.system("chmod a+x ./odin4")
+            os.system("./odin4")
+            cs()
+            main()
+        else:
+            print("Your OS does not support Odin.")
+            time.sleep(3)
+            cs()
+            main()
 
 def reboot_options():
     cs()
@@ -213,6 +251,8 @@ def main():
         root()
     elif choice == 5:
         brick()
+    elif choice == 6:
+        samsung()
     elif choice == 99:
         exit()
     else:
