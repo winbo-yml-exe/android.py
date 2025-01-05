@@ -88,6 +88,11 @@ def samsung():
             time.sleep(3)
             cs()
             main()
+    else:
+        print("Invalid choice.")
+        time.sleep(1)
+        cs()
+        main()
 
 def reboot_options():
     cs()
